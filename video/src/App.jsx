@@ -24,36 +24,15 @@ class  App extends React.Component {
 // const userVideo = useRef();
 //  partnervVdeos = useRef()
 
-componentDidMount (){
-  socket.current= io("/");
-  socket.on("yourID", (id) => {
-    console.log(id)
-  this.setState({
-    ID : id
-  })
-})
-  // socket.current.on("allUsers", (users) => {
-  //   setUsers(users);
-  // })
- console.log(this.state.userName + " id " + this.state.socketID)
-}
-// useEffect (  () => {
-//   socket.current = io("/");
-//   socket.current.on("yourID", (id) => {
-//     setYourID(id);
-//   })
-//   socket.current.on("allUsers", (users) => {
-//     setUsers(users);
-//   })
-// }, [])
-  
+
 setUserDetails(userName, password ,event) { 
   event.preventDefault();
   const test = {
-    name: userName
+    name: 'fdfd'
   }
   const data = JSON.stringify(test)
-  socket.emit('userName',data )
+  socket.connect()
+  socket.emit('userName',test )
   socket.on("yourID", (id) => {
     console.log(id)
   this.setState({
@@ -67,7 +46,7 @@ setUserDetails(userName, password ,event) {
      isLoggedIn: true,    
    })
    console.log(this.state.isLoggedIn+ 'ddf')
-     socket.current.emit('userName', this.state.userName)
+     //socket.emit('userName', this.state.userName)
 
 }
   render() {

@@ -2,21 +2,20 @@
 //var  isAuthenticated  = require('../database/autentication.js')
 
 var app = require('express')();
+
+var path = require('path')
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-server.listen(4000);
+server.listen(4000, ()=>console.log('dfd'));
 var users = {}
 // app.use(bodyParser.json());
 // app.use(express.static('build'));
-app.get("/test", ()=> {
-    console.log("test")
-})
 io.on('connection', socket => {
     console.log("User  conncetd ")
     
     socket.on("userName", function (data)  {
 
-        console.log('data' + data.name ) 
+        console.log('data' + data.name, data.pp ) 
         // if (isAuthenticated(data.name,data.password)){
         //     console.log( "correct user ")
             // get socket id  from database 
